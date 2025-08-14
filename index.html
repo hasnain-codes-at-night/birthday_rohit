@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 22nd Birthday, Rohit!</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display & Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles & Animations -->
+    <style>
+        body {
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Lato', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* UPDATED: Hero background with responsive positioning */
+        .hero-bg {
+            background-image: url('images/IMG-20201229-WA0131.jpg');
+            /* Use 'contain' on larger screens to show full image, 'cover' on mobile */
+            background-size: cover;
+            background-position: center top; /* Focus on top of image where face likely is */
+        }
+        
+        /* Alternative approach: Use contain on desktop, cover on mobile */
+        @media (min-width: 1024px) {
+            .hero-bg {
+                background-size: contain;
+                background-position: center center;
+                /* Add a subtle dark overlay to ensure text readability */
+                background-color: #1a1a1a;
+            }
+        }
+        
+        /* For tablets and smaller desktops */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .hero-bg {
+                background-position: center 20%; /* Show more of the upper portion */
+            }
+        }
+        
+        .chess-bg {
+            background-image: url('https://images.unsplash.com/photo-1529699211952-734e80c4d42b?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        }
+        .gym-bg {
+             background-image: url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+        }
+        
+        /* Scroll Animations */
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Masonry-style layout */
+        .masonry-container {
+            column-count: 3;
+            column-gap: 1.5rem;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .masonry-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            z-index: 10;
+        }
+
+        .masonry-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .masonry-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+
+        .masonry-text {
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .masonry-item:hover .masonry-text {
+            transform: translateY(0);
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .parallax-bg {
+                background-attachment: scroll;
+            }
+            .masonry-container {
+                column-count: 2;
+                column-gap: 1rem;
+            }
+            .masonry-item {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .masonry-container {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <section class="h-screen min-h-[700px] flex items-center justify-center parallax-bg hero-bg">
+        <div class="text-center text-white p-6 bg-black/30 backdrop-blur-sm rounded-lg">
+            <h1 class="font-serif text-5xl md:text-8xl font-bold text-shadow">Happy Birthday, Rohit</h1>
+            <p class="mt-4 text-xl md:text-2xl font-light text-shadow">A new chapter begins. Wishing you all the best.</p>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="py-20 md:py-32 bg-[#121212]">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <div class="reveal">
+                <h2 class="font-serif text-3xl md:text-5xl text-white">Cheers to 22 Years</h2>
+                <p class="mt-6 text-lg text-gray-300 leading-relaxed">
+                    Happy 22nd, Rohit. I was thinking about what makes you such a great friend, and I think it's how you've always been one of the most real, down-to-earth people I know. In a world where everything can get so complicated, you have this way of cutting through the noise and focusing on what actually matters. It's a rare thing, and something I've always looked up to. Thanks for being that solid, dependable friend. Hope you have a great, low-key birthday and an amazing year ahead. You deserve all the best.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chess Section -->
+    <section class="min-h-[500px] py-20 flex items-center parallax-bg chess-bg">
+        <div class="container mx-auto px-6">
+            <div class="reveal max-w-md bg-black/60 backdrop-blur-md p-8 rounded-lg shadow-2xl">
+                <h3 class="font-serif text-3xl md:text-4xl text-white">The Strategist</h3>
+                <p class="mt-4 text-gray-200">
+                    Like in chess, you approach life with thought, patience, and a brilliant mind. Always seeing a few moves ahead, your calm demeanor and sharp intellect are truly inspiring.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gym Section -->
+    <section class="min-h-[500px] py-20 flex items-center justify-end parallax-bg gym-bg">
+        <div class="container mx-auto px-6 flex justify-end">
+            <div class="reveal max-w-md bg-black/60 backdrop-blur-md p-8 rounded-lg shadow-2xl text-right">
+                <h3 class="font-serif text-3xl md:text-4xl text-white">The Athlete</h3>
+                <p class="mt-4 text-gray-200">
+                    Your dedication in the gym is a testament to your discipline and strength, not just of body, but of character. You consistently push your limits and prove that hard work pays off.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Gallery Section -->
+    <section class="py-20 md:py-32 bg-[#181818]">
+        <div class="container mx-auto px-6">
+            <div class="reveal text-center">
+                <h2 class="font-serif text-3xl md:text-5xl text-white">Moments That Matter</h2>
+                <p class="mt-4 text-lg text-gray-400">A collection of memories worth treasuring.</p>
+            </div>
+            
+            <!-- Masonry Gallery -->
+            <div class="masonry-container reveal">
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0003.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Good Times</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0016.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Adventures</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0042.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Laughter</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0063.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Chill</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0081.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Memories</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0116.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">The Journey</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0120.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Moments</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0123.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Unforgettable</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0133.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Raja</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20201229-WA0150.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Celebration</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20220423-WA0006.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Always</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20220423-WA0185 (copy).jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">The Best</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG-20220423-WA0235.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Cheers</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG20200215110651.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Joy</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG20200215114056.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Happiness</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG20201229113313.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">Forever</span></div>
+                </div>
+                <div class="masonry-item">
+                    <img src="images/IMG20201229120045.jpg" alt="Memory of Rohit" class="masonry-image">
+                    <div class="masonry-overlay"><span class="masonry-text">To Us</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Message Section -->
+    <section class="py-20 md:py-32 bg-[#121212]">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <div class="reveal">
+                <h2 class="font-serif text-3xl md:text-5xl text-white">Cheers to Another Year</h2>
+                <p class="mt-6 text-lg text-gray-300 leading-relaxed">
+                    May the year ahead be filled with happiness, success, and everything you're working towards. You deserve the best. Happy birthday, my friend!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-gray-800">
+        <p class="text-gray-500">Crafted with ❤️ for a one-of-a-kind friend.</p>
+    </footer>
+
+    <script>
+        // --- Scroll Reveal Animation ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+
+</body>
+</html>
